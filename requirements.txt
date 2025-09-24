@@ -1,0 +1,17 @@
+# Web Framework
+fastapi
+uvicorn
+
+# OCR + Preprocessing
+python-doctr
+torch
+torchvision
+opencv-python
+pdf2image
+Pillow
+
+# Data Handling
+pydantic
+scikit-learn
+numpy
+joblib

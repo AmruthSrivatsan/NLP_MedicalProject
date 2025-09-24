@@ -1,0 +1,25 @@
+{
+  "patient": {},
+  "tests": [
+    {
+      "name": "a & &",
+      "value": "2",
+      "unit": "3 # E R I A I 8"
+    },
+    {
+      "name": "b E E",
+      "value": "8",
+      "unit": "8 \u20ac E 4 8 N0 N0 a io # i I 8 8"
+    },
+    {
+      "name": "E * I % % % * I I I I",
+      "value": "1",
+      "unit": "I 1 \u20ac a * 8 I"
+    },
+    {
+      "name": "I a",
+      "value": "8",
+      "unit": null
+    }
+  ]
+}

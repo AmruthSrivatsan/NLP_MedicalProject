@@ -1,0 +1,100 @@
+Laboratory Services
+Amrita Institute of Medical Sciences and Research Centre
+Elamakkara P.O Kochi-26
+Phone: 0 0091 (0) 484 280 1234, 280 4321, 400 1234
+Fax : 0091 (0) 484 280 2020
+Result Report
+Clinical Chemistry Lab
+Page 1 of 5
+MRD No.: 2001595
+Sex:
+M
+Consulting Doctor: Anoop Menon
+Name: FREDIN TOM CYRIAC
+Visit Type: OP
+DOB: 21/12/1992
+Visit ID: OP0001 Patient Location: Comprehensive Medicine
+Age:
+25 Years
+Test
+Result(Unit)
+ReferenceRange
+Remarks
+Interpretation Status
+Ordered Date: 12/09/2018
+Sample ID: 0523CH180912
+Sample Col. Date: 12/09/2018 08:14 Result Certified Date: 12/09/2018 15:18
+Lipid Panel: CHOL, LDL, HDL, VLDL, Triglycerides(CHEM-PANEL]
+h Cholesterol, total -Serum CHE-
+168.5 mg/dl
+150.0 to 200.0
+RC
+CHO/POD
+h Triglycerides -Serum
+GPO-POD 87.5 mg/dl
+50.0 to 150.0
+RC
+h Cholesterol HDL-Serum CHE-
+35.5 mg/dl
+40.0 to 60.0
+RC
+CHO/POD
+I Cholesterol LDL-Serum CHE-
+130.2 mg/dl
+100.0 to 129.0
+RC
+CHO/POD
+h Cholesterol VLDL
+17.5 mg/dl
+0.0 to 39.0
+Calculation
+RC
+Sample ID: 0522CH180912
+Sample Col. Date: 12/09/2018 08:14 Result Certified Date: 12/09/2018 15:18
+GE Pre employment Package upto 40yrs
+h Glucose [Fl-
+Hexokinase 91.3 mg/dl
+74.0 to 106.0
+RC
+Serum/Plasma
+Sample ID: 0523CH180912
+Sample Col. Date: 12/09/2018 08:14 Result Certified Date: 12/09/2018 15:18
+GE Pre employment Package upto 40yrs
+h Creatinine;-Serum
+JaffeMethod 0.98 mg/dl
+0.0 to 1.2
+RC
+h Uric acid [REDACTED] Serum
+Photometry 7.2 mg/dl
+3.4 to 7.0
+RC
+h Bilirubin Total -Serum
+Photometry 1.01 mg/dl
+0.0 to 1.1
+RC
+h AST (SGOT) serum
+Kinetic/IFCC 13.8 IU/L
+0.0 to 40.0
+RC
+h ALT [SGPT)-serum
+Kinetic/IFCC 16.6 IU/L
+0.0 to 41.0
+RC
+Sample ID: 0524CH180912
+Sample Col. Date: 12/09/2018 08:14 Result Certified Date: 14/09/2018 15:34
+GE Pre employment Package upto 40yrs
+h G-6-PD-E E & I Lab
+Deficient (5.8)
+RR:6.97 -20.5
+**RPC
+Units/gm of
+HB
+**End Of Page 1***************
+Kindly Correlate with the clinical condition:
+2 [REDACTED]
+a
+Authorized Signature
+Printed On: 25/09/2018 08:27
+(*) RPC- Result Provisionally Certified, RC- Result Certified, RR- Result Rectified
+") Approval by Lab Authority is Pending
+(***) Non-NABL Services

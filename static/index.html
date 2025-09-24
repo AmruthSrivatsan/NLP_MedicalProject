@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lab Report Digitizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🧪 Lab Report Digitizer</h1>
+    <p class="subtitle">Upload → OCR → Review → Save</p>
+
+    <section class="card">
+      <h2>1. Upload Lab Report</h2>
+      <form id="uploadForm">
+        <input type="file" id="fileInput" name="file" accept=".png,.jpg,.jpeg,.pdf" required>
+        <button type="submit" class="btn">Upload</button>
+      </form>
+    </section>
+
+    <section class="card" id="progressSection" style="display:none;">
+      <h2>Processing...</h2>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. OCR Raw Text</h2>
+      <pre id="rawText">No file uploaded yet.</pre>
+    </section>
+
+    <section class="card">
+      <h2>3. Extracted Data (JSON)</h2>
+      <pre id="output">No file uploaded yet.</pre>
+    </section>
+
+    <section class="card">
+      <h2>4. Annotated Report Preview</h2>
+      <img id="reportImage" style="max-width:100%; border:1px solid #ccc;">
+    </section>
+
+    <section class="card">
+      <h2>5. Evaluation</h2>
+      <button id="evaluateBtn" class="btn eval-btn">📊 Run Evaluation</button>
+      <div id="evalOutput"></div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
