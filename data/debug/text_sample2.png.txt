@@ -1,87 +1,32 @@
-APEX
-NABL ACCREDITED
-DIAGNOSTICS
-ISO CERTIFIED
-Date
-30/08/2018
-Srl.No. 13
-Name MR. SANDEEP YADAV
-Age
-21 Yrs.
-Ref. No.UHC-4
-Refd.By.
-Sex M
-Company UHCIAEGON
-Test Name
-Value
-Unit
-Normal Value
+APEX NABL ACCREDITED
+DIAGNOSTICS ISO CERTIFIED
+Name Date MR. 30/08/2018 SANDEEP Srl.No. 13 Ref. NO.UHC-4
+Refd.By. YADAV Age 21 Yrs. Sex M
+Company UHC/AEGON
+Test Name Value Unit Normal Value
 HAEMATOLOGY
-HAEMOGLOBIN
-16.0
-gm/dl
-13.00 -18.00
-TOTALI LEUCOCYTIC COUNT (TLC)
-9500
-Icumm
-4000 : 11000
-DIFFERENTIALI LEUCOCYTE COUNT
-NEUTROPHIL
-65
-%
-45-70
-LYMPHOCYTE
-24
-%
-20-45
-EOSINOPHIL
-5
-%
-2-6
-MONOCYTE
-6
-%
-2-10
-ERYTHROCYTE SED. RATE(WES)
-2
-mm/lst hr.
-0-13
-PC.V/HAEMATOCRIT
-50.3
-%
-40-54
-MCV
-90.1
-fl.
-75-95
-MCH
-28.5
-pg
-27-31
-MCHC
-33.6
-gm/di
-31-35
-PLATELET COUNT
-2.00
-lacs/cmm
-1.50 -4.00
-R BC COUNTS
-5.14
-million/cmm
-4.5-6.5
-PERIPHERALI SMEAR
-RBC'S are predominantly normochromic! and normocytic. Platelets are
-No immature cells or haemoparasite seen.
-adequate on smear.
-W
+HAEMOGLOBIN 16.0 gm/di 13.00 -18.00
+TOTAL LEUCOCYTIC COUNT (TLC) 9500 lcumm 4000 --11000
+DIFFERENTIAL LEUÇOCYTE COUNT
+NEUTROPHIL 65 % 45-70
+LYMPHOCYTE 24 % 20-45
+EOSINOPHIL 5 % 2-6
+MONOCYTE 6 % 2-10
+ERYTHROCYTE SED. RATE(WES) 2 mm/Ist hr. 0-13
+PCV/HAEMATOCRIT 50.3 % 40-54
+MCV 90.1 fl. 75-95
+MCH 28.5 pg 27-31
+MCHC 33.6 gm/di 31-35
+PLATELET COUNT 2.00 lacs/cmm 1.50-4.00
+RBC COUNTS 5.14 million/cmm 4.5-6.5
+PERIPHERAL SMEAR
+RBC'S No immature are predominantly cells or haemoparasite normochromic and normocytic. Platelets are adequate on smear.
+seen.
 APEX DIAGNOSTICS
-12 Jacaranda Marg
-DLF City Phase- II
-DRI M TANEJA
-Gurgaon
-MBBS MD PATHOLOGY (AIIMS)
+12. Jacaranda Marg
+DR M TANEJA DLF City Phase-il Gurgaon
+MBBS MDI PATHOLOGY (AIIMS)
 Contd..2
-12, JACARANDA MARG, DLF CITY, PHASE-II, GURGAON
-238 8786, 256 3124,401 1409
-TIMINGS : Mon [REDACTED] Sat 3 8.00 a.m. 8.00p.m. Sunday : 8.00 a.m. : 12.00 p.m.
+12, JACARANDAMARG, DLF CITY, PHASE-II, GURGAON
+238 8786, 256 3124, 401 1409
+TIMINGS : Mon [REDACTED] Sat S 8.00 a.m. [REDACTED] 8.00p.m. Sunday : 8.00 a.m. : 12.00 pm.
