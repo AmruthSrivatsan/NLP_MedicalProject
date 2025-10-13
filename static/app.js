@@ -37,13 +37,73 @@ function stopProgress(interval) {
 }
 
 // Render editable form with read-only confidence
-function renderEditableForm(data) {
-  let html = "<h3>Patient Info</h3>";
-  for (const [k, v] of Object.entries(data.patient)) {
-    html += `<label>${k}: <input type="text" id="pat_${k}" value="${v}"></label><br/>`;
-  }
+function createPatientRow(key = "", value = "") {
+  const row = document.createElement("tr");
+  row.classList.add("patient-row");
 
-  html += "<h3>Tests</h3><table><tr><th>Name</th><th>Value</th><th>Unit</th><th>Confidence</th></tr>";
+  const fieldCell = document.createElement("td");
+  const fieldInput = document.createElement("input");
+  fieldInput.type = "text";
+  fieldInput.className = "patient-key";
+  fieldInput.value = key;
+  fieldCell.appendChild(fieldInput);
+
+  const valueCell = document.createElement("td");
+  const valueInput = document.createElement("input");
+  valueInput.type = "text";
+  valueInput.className = "patient-value";
+  valueInput.value = value;
+  valueCell.appendChild(valueInput);
+
+  const actionCell = document.createElement("td");
+  const deleteBtn = document.createElement("button");
+  deleteBtn.type = "button";
+  deleteBtn.className = "delete-patient-row";
+  deleteBtn.textContent = "Delete";
+  actionCell.appendChild(deleteBtn);
+
+  row.appendChild(fieldCell);
+  row.appendChild(valueCell);
+  row.appendChild(actionCell);
+
+  return row;
+}
+
+function setupPatientRowHandlers() {
+  const tableBody = document.getElementById("patientTableBody");
+  const addBtn = document.getElementById("addPatientRow");
+  const table = document.getElementById("patientTable");
+
+  if (!tableBody || !addBtn || !table) return;
+
+  addBtn.onclick = () => {
+    tableBody.appendChild(createPatientRow());
+  };
+
+  table.onclick = (event) => {
+    const target = event.target;
+    if (target && target.classList.contains("delete-patient-row")) {
+      const row = target.closest("tr");
+      if (row) {
+        row.remove();
+      }
+    }
+  };
+}
+
+function renderEditableForm(data) {
+  let html = `
+    <h3>Patient Info</h3>
+    <table id="patientTable">
+      <thead>
+        <tr><th>Field</th><th>Value</th><th></th></tr>
+      </thead>
+      <tbody id="patientTableBody"></tbody>
+    </table>
+    <button type="button" id="addPatientRow">+ Add Row</button>
+    <h3>Tests</h3>
+    <table>
+      <tr><th>Name</th><th>Value</th><th>Unit</th><th>Confidence</th></tr>`;
   data.tests.forEach((t, i) => {
     const conf = (t.confidence !== undefined) ? t.confidence.toFixed(2) : "N/A";
     html += `<tr>
@@ -55,6 +115,14 @@ function renderEditableForm(data) {
   });
   html += "</table>";
   hitlForm.innerHTML = html;
+
+  const patientBody = document.getElementById("patientTableBody");
+  const patientEntries = data.patient ? Object.entries(data.patient) : [];
+  patientEntries.forEach(([k, v]) => {
+    patientBody.appendChild(createPatientRow(k, v));
+  });
+
+  setupPatientRowHandlers();
   saveBtn.disabled = false;
 }
 
@@ -102,8 +170,13 @@ saveBtn.addEventListener("click", async () => {
   const corrected = { patient: {}, tests: [] };
 
   // Collect patient fields
-  document.querySelectorAll("[id^='pat_']").forEach(inp => {
-    corrected.patient[inp.id.replace("pat_", "")] = inp.value;
+  const patientRows = document.querySelectorAll("#patientTableBody tr");
+  patientRows.forEach(row => {
+    const key = row.querySelector(".patient-key")?.value.trim();
+    const value = row.querySelector(".patient-value")?.value ?? "";
+    if (key) {
+      corrected.patient[key] = value;
+    }
   });
 
   // Collect test fields (ignore confidence as it's read-only)
