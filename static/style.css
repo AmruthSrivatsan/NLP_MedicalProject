@@ -101,7 +101,7 @@ pre {
   text-align: center;
 }
 
-.eval-table th {
+.eval-table th { 
   background: #f2f2f2;
 }
 
@@ -113,4 +113,38 @@ pre {
 .fail {
   color: red;
   font-weight: bold;
+}
+
+#patientTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+#patientTable th,
+#patientTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#patientTable th {
+  background: #f2f2f2;
+  text-align: left;
+}
+
+#addPatientRow {
+  margin-bottom: 15px;
+}
+
+.delete-patient-row {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-patient-row:hover {
+  background: #b02a37;
 }
