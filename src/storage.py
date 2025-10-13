@@ -25,4 +25,17 @@ def save_correction(filename, data):
     out_path = os.path.join(CORRECT_DIR, f"{base}_corrected.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
+    # Keep the final report in sync with the latest correction
+    save_confirmed(filename, data)
     return out_path
+
+
+def load_correction(filename):
+    """Load previously saved corrections for a file if available."""
+    base = os.path.splitext(filename)[0]
+    in_path = os.path.join(CORRECT_DIR, f"{base}_corrected.json")
+    if not os.path.exists(in_path):
+        return None
+
+    with open(in_path, "r", encoding="utf-8") as f:
+        return json.load(f)

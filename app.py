@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 
 from src.ocr import ocr_image
 from src.extract_rules import extract_with_text
-from src.storage import save_confirmed, save_correction
+from src.storage import save_confirmed, save_correction, load_correction
 from evaluate import evaluate_all
 
 app = FastAPI(title="Lab Report Digitization API")
@@ -68,6 +68,11 @@ async def upload(file: UploadFile):
 
         # Extract structured data
         parsed = extract_with_text(full_text)
+
+        # If a correction exists for this file, prefer that payload
+        corrected = load_correction(file.filename)
+        if corrected:
+            parsed = corrected
 
         # Annotate image
         try:
