@@ -2,7 +2,7 @@ const uploadForm = document.getElementById("uploadForm");
 const fileInput = document.getElementById("fileInput");
 const output = document.getElementById("output");
 const rawText = document.getElementById("rawText");
-const reportImage = document.getElementById("reportImage");
+const reportImageContainer = document.getElementById("reportImageContainer");
 const evalOutput = document.getElementById("evalOutput");
 const progressSection = document.getElementById("progressSection");
 const progressFill = document.getElementById("progressFill");
@@ -129,11 +129,11 @@ function renderEditableForm(data) {
 // Upload
 uploadForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const file = fileInput.files[0];
-  if (!file) return;
+  const files = Array.from(fileInput.files || []);
+  if (!files.length) return;
 
   const fd = new FormData();
-  fd.append("file", file);
+  files.forEach(file => fd.append("files", file));
 
   const interval = startProgress();
 
@@ -152,8 +152,22 @@ uploadForm.addEventListener("submit", async (e) => {
     rawText.textContent = data.raw_text || "⚠️ OCR text not available";
     output.textContent = "✅ Extracted:\n" + JSON.stringify(data.extracted, null, 2);
 
-    if (data.image) {
-      reportImage.src = `${API_URL}${data.image}`;
+    if (Array.isArray(data.images) && data.images.length) {
+      reportImageContainer.innerHTML = "";
+      data.images.forEach((img, index) => {
+        const figure = document.createElement("figure");
+        const image = document.createElement("img");
+        image.src = `${API_URL}${img.image}`;
+        image.alt = `Annotated page ${index + 1}`;
+        const caption = document.createElement("figcaption");
+        const label = img.filename ? `Page ${index + 1}: ${img.filename}` : `Page ${index + 1}`;
+        caption.textContent = label;
+        figure.appendChild(image);
+        figure.appendChild(caption);
+        reportImageContainer.appendChild(figure);
+      });
+    } else {
+      reportImageContainer.innerHTML = "<p>No annotated image available.</p>";
     }
 
     renderEditableForm(data.extracted);

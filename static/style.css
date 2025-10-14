@@ -148,3 +148,25 @@ pre {
 .delete-patient-row:hover {
   background: #b02a37;
 }
+
+.image-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.image-gallery figure {
+  margin: 0;
+}
+
+.image-gallery img {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.image-gallery figcaption {
+  margin-top: 6px;
+  font-size: 0.9em;
+  color: #555;
+}
