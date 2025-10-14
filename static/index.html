@@ -12,7 +12,7 @@
     <section class="card">
       <h2>1. Upload Lab Report</h2>
       <form id="uploadForm">
-        <input type="file" id="fileInput" name="file" accept=".png,.jpg,.jpeg,.pdf" required>
+        <input type="file" id="fileInput" name="file" accept=".png,.jpg,.jpeg,.pdf" multiple required>
         <button type="submit" class="btn">Upload</button>
       </form>
     </section>
@@ -36,7 +36,7 @@
 
     <section class="card">
       <h2>4. Annotated Report Preview</h2>
-      <img id="reportImage" style="max-width:100%; border:1px solid #ccc;">
+      <div id="reportImageContainer" class="image-gallery"></div>
     </section>
 
     <section class="card">

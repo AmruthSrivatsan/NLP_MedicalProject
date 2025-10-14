@@ -1,5 +1,6 @@
 import os, shutil, cv2, json
-from fastapi import FastAPI, UploadFile, HTTPException, Body
+from typing import List
+from fastapi import FastAPI, UploadFile, HTTPException, Body, File
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -54,41 +55,70 @@ def annotate_image(image_path, tokens, parsed):
     return out_path
 
 @app.post("/upload")
-async def upload(file: UploadFile):
+async def upload(files: List[UploadFile] = File(...)):
     try:
-        file_path = os.path.join(UPLOAD_DIR, file.filename)
-        with open(file_path, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
+        if not files:
+            raise HTTPException(status_code=400, detail="No files uploaded")
 
-        # Run OCR safely
-        try:
-            tokens, full_text = ocr_image(file_path)
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=f"OCR failed: {str(e)}")
+        saved_pages = []
+        combined_texts = []
 
-        # Extract structured data
-        parsed = extract_with_text(full_text)
+        for upload_file in files:
+            file_path = os.path.join(UPLOAD_DIR, upload_file.filename)
+            with open(file_path, "wb") as buffer:
+                shutil.copyfileobj(upload_file.file, buffer)
 
-        # If a correction exists for this file, prefer that payload
-        corrected = load_correction(file.filename)
+            try:
+                tokens, full_text = ocr_image(file_path)
+            except Exception as e:
+                raise HTTPException(status_code=500, detail=f"OCR failed for {upload_file.filename}: {str(e)}")
+
+            saved_pages.append({
+                "filename": upload_file.filename,
+                "path": file_path,
+                "tokens": tokens,
+            })
+            combined_texts.append(full_text)
+
+        combined_text = "\n\n".join(text for text in combined_texts if text)
+
+        # Extract structured data on combined text
+        parsed = extract_with_text(combined_text)
+
+        # Determine document identifier
+        base_name = os.path.splitext(files[0].filename)[0]
+        if len(files) > 1:
+            base_name = f"{base_name}_bundle"
+        bundle_filename = f"{base_name}.json"
+
+        # If a correction exists for this bundle, prefer that payload
+        corrected = load_correction(bundle_filename)
         if corrected:
             parsed = corrected
 
-        # Annotate image
-        try:
-            annotated_path = annotate_image(file_path, tokens, parsed)
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Annotation failed: {str(e)}")
+        # Annotate each page
+        annotated_images = []
+        for page in saved_pages:
+            try:
+                annotated_path = annotate_image(page["path"], page["tokens"], parsed)
+            except Exception as e:
+                raise HTTPException(status_code=500, detail=f"Annotation failed for {page['filename']}: {str(e)}")
 
-        # Save structured JSON
-        save_confirmed(file.filename, parsed)
+            annotated_images.append({
+                "filename": page["filename"],
+                "image": f"/data/debug/{os.path.basename(annotated_path)}"
+            })
+
+        # Save structured JSON for the bundle
+        save_confirmed(bundle_filename, parsed)
 
         return {
             "status": "ok",
-            "file": file.filename,
-            "raw_text": full_text,
+            "file": bundle_filename,
+            "files": [page["filename"] for page in saved_pages],
+            "raw_text": combined_text,
             "extracted": parsed,
-            "image": f"/data/debug/{os.path.basename(annotated_path)}"
+            "images": annotated_images
         }
     except HTTPException:
         raise
